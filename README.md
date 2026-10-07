@@ -1,1 +1,2 @@
-# Project-Cleaning-and-Analysing-hotel-booking-data-
+# Hotel booking analysis
+
