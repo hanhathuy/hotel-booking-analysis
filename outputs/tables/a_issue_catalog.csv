@@ -1,0 +1,11 @@
+﻿issue_id,field,issue,detection_rule,affected_rows,example_row_ids
+ISSUE_01,23 business columns,Absolute duplicate records across 23 business columns (excluding row_id),"raw_df.duplicated(subset=[col for col in raw_df.columns if col != ""row_id""])",180,R00125; R00342; R00512; R00620; R00811
+ISSUE_02,booking_id,Duplicate booking_id values or discrepancies due to uppercase/lowercase and whitespace differences,"raw_df[""booking_id""].str.strip().str.upper().duplicated()",325,R00050; R00102; R00150; R00210; R00305
+ISSUE_03,reservation_status,Misplaced date values (in YYYY-MM-DD format) erroneously recorded inside the reservation_status column,"reservation_status.str.fullmatch(r""\d{4}-\d{2}-\d{2}"")",26,R00021; R00034; R00067; R00092; R00114
+ISSUE_04,country,"Presence of missing tokens (NULL, NA, ?, -, N/A), empty strings, or full country names instead of ISO codes","country.str.strip().str.lower().isin(tokens_lower) or country.eq("""")",127,R00015; R00022; R00041; R00055; R00078
+ISSUE_05,adr,"Presence of currency symbols (€, EUR), decimal commas, or missing tokens within the ADR column","adr contains non-numeric chars, currency symbols, or missing tokens",121,R00045; R00088; R00120; R00145; R00170
+ISSUE_06,arrival_date,"Unstandardized arrival date formats mixed across multiple distinct structures (e.g., DD/MM/YYYY, English full text)",arrival_date has multiple unstandardized date formats or empty,25,R00004; R00005; R00018; R00033; R00059
+ISSUE_07,market_segment,"Presence of irregular labels such as ""Undefined"", empty values, or redundant whitespaces","market_segment.str.strip().eq(""Undefined"") or empty",10,R00110; R00115; R00230; R00312; R00450
+ISSUE_08,meal,"Presence of missing tokens, empty strings, or ""Undefined"" labels (which structurally equate to SC)","meal.str.strip().lower().isin(tokens_lower) or meal.eq("""")",24,R00012; R00033; R00074; R00109; R00155
+ISSUE_09,children,Presence of empty cells or text-based missing tokens instead of numeric integer values,"children.str.strip().lower().isin(tokens_lower) or children.eq("""")",41,R00020; R00025; R00053; R00089; R00130
+ISSUE_10,reservation_status_date,"Empty values, missing tokens, or malformed formats within the reservation status update date column","reservation_status_date.str.strip().eq("""") or missing tokens",26,R00030; R00040; R00075; R00111; R00160
