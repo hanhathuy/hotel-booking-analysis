@@ -2,4 +2,4 @@
 Total rows,10325.0,10000.0,Reduced due to removing duplicates and invalid records
 Unique booking_ids,10145.0,10000.0,Ensures each unit strictly represents 1 distinct booking
 Duplicate booking_ids,180.0,0.0,Fully eliminated duplicate entries
-Cancel rate (%),36.71,37.41,Normalized denominator by excluding NaN values
+Cancel rate (%),36.5,37.41,Normalized denominator by excluding NaN values
