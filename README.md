@@ -48,8 +48,8 @@ Antonio, N., de Almeida, A., & Nunes, L. (2019). *Hotel booking demand datasets.
 
 | # | Member | Student ID | Responsibility | GitHub |
 |---|---|---|---| --- |
-| 1 | `Hà Nhật Huy` | `11253519` | https://github.com/hanhathuy |
-| 2 | `Lê Minh Quân` | `11257109` | https://github.com/07MinhQuanT1 |
+| 1 | `Hà Nhật Huy` | `11253519` | | https://github.com/hanhathuy 
+| 2 | `Lê Minh Quân` | `11257109` |  |https://github.com/07MinhQuanT1 
 
 
 Group `NhomXX` · last full re-run `DD/MM/YYYY` · 
