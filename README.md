@@ -8,7 +8,7 @@ Cleaning and analysis of 10,325 deliberately corrupted booking records from two 
 ## Structure
 
 ``` text
-NhomXX_KhachSan/
+hotel-booking-analysis/
 ├── README.md
 ├── hotel_analysis.ipynb          Full pipeline (Restart & Run All)
 ├── Bao_cao_Khach_san.pdf         Report
