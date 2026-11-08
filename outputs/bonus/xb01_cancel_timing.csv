@@ -1,0 +1,23 @@
+﻿hotel,deposit_type,timing_group,n_canceled,pct_in_group
+Tất cả,Tất cả,0-7,423,11.75
+Tất cả,Tất cả,8-30,808,22.44
+Tất cả,Tất cả,31-90,1076,29.88
+Tất cả,Tất cả,91+,1294,35.93
+City Hotel,Tất cả,0-7,305,11.33
+City Hotel,Tất cả,8-30,584,21.69
+City Hotel,Tất cả,31-90,776,28.82
+City Hotel,Tất cả,91+,1028,38.17
+Resort Hotel,Tất cả,0-7,118,13.0
+Resort Hotel,Tất cả,8-30,224,24.67
+Resort Hotel,Tất cả,31-90,300,33.04
+Resort Hotel,Tất cả,91+,266,29.3
+Tất cả,No Deposit,0-7,389,16.5
+Tất cả,No Deposit,8-30,670,28.41
+Tất cả,No Deposit,31-90,693,29.39
+Tất cả,No Deposit,91+,606,25.7
+Tất cả,Non Refund,0-7,30,2.42
+Tất cả,Non Refund,8-30,138,11.15
+Tất cả,Non Refund,31-90,383,30.94
+Tất cả,Non Refund,91+,687,55.49
+Tất cả,Refundable,0-7,4,80.0
+Tất cả,Refundable,91+,1,20.0

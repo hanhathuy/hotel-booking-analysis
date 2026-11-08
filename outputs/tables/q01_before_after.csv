@@ -1,5 +1,12 @@
 ﻿metric,before,after,note
-Total rows,10325.0,10000.0,Reduced due to removing duplicates and invalid records
-Unique booking_ids,10145.0,10000.0,Ensures each unit strictly represents 1 distinct booking
-Duplicate booking_ids,180.0,0.0,Fully eliminated duplicate entries
-Cancel rate (%),36.5,37.41,Normalized denominator by excluding NaN values
+Số dòng,10325,10000,Trước = dòng nhập (row_id); sau = đặt phòng (booking_id). Mẫu số khác nhau
+Số booking_id khác nhau (chuỗi thô),10145,10000,Trước tính trên chuỗi thô: chưa strip/upper
+Số booking_id khác nhau (sau strip + upper),10000,10000,"Chênh lệch so với dòng trên = biến thể hoa/thường, khoảng trắng"
+Dòng trùng trên 23 cột (chuỗi thô),180,0,Trước: chưa chuẩn hóa booking_id nên bỏ sót 1 dòng trùng
+Dòng trùng trên 23 cột (sau chuẩn hóa booking_id),181,0,"Loại ở B1, lưu vết trong row_lineage"
+booking_id lặp (chuỗi thô),180,0,
+booking_id lặp (sau strip + upper),325,0,Gộp ở B8; sau = 0
+Tỷ lệ thiếu adr (%),0.24,0.36,TĂNG vì 11 ô sai quy ước bị chuyển thành thiếu (không đoán giá)
+"Dòng ghi đúng nhãn ""City Hotel""",6763,6702,"Trước: đếm đúng chính tả bỏ sót 151 dòng biến thể (city hotel, City, "" City Hotel""...); sau: đã gộp biến thể và loại trùng"
+Số đặt phòng bị hủy,3769,3741,"Trước: đếm is_canceled == ""1"" thô, bỏ sót 105 dòng ghi yes/True/1.0; sau: đã đồng bộ theo reservation_status"
+Tỷ lệ hủy (%),36.5,37.41,Trước: 3769/10325; sau: 3741/10000 (mẫu số = đặt phòng có is_canceled)

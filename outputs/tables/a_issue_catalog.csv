@@ -1,11 +1,19 @@
 ﻿issue_id,field,issue,detection_rule,affected_rows,example_row_ids
-ISSUE_01,23 business columns,Absolute duplicate records across 23 business columns (excluding row_id),"raw_df.duplicated(subset=[col for col in raw_df.columns if col != ""row_id""])",180,R00125; R00342; R00512; R00620; R00811
-ISSUE_02,booking_id,Duplicate booking_id values or discrepancies due to uppercase/lowercase and whitespace differences,"raw_df[""booking_id""].str.strip().str.upper().duplicated()",325,R00050; R00102; R00150; R00210; R00305
-ISSUE_03,reservation_status,Misplaced date values (in YYYY-MM-DD format) erroneously recorded inside the reservation_status column,"reservation_status.str.fullmatch(r""\d{4}-\d{2}-\d{2}"")",26,R00021; R00034; R00067; R00092; R00114
-ISSUE_04,country,"Presence of missing tokens (NULL, NA, ?, -, N/A), empty strings, or full country names instead of ISO codes","country.str.strip().str.lower().isin(tokens_lower) or country.eq("""")",127,R00015; R00022; R00041; R00055; R00078
-ISSUE_05,adr,"Presence of currency symbols (€, EUR), decimal commas, or missing tokens within the ADR column","adr contains non-numeric chars, currency symbols, or missing tokens",121,R00045; R00088; R00120; R00145; R00170
-ISSUE_06,arrival_date,"Unstandardized arrival date formats mixed across multiple distinct structures (e.g., DD/MM/YYYY, English full text)",arrival_date has multiple unstandardized date formats or empty,25,R00004; R00005; R00018; R00033; R00059
-ISSUE_07,market_segment,"Presence of irregular labels such as ""Undefined"", empty values, or redundant whitespaces","market_segment.str.strip().eq(""Undefined"") or empty",10,R00110; R00115; R00230; R00312; R00450
-ISSUE_08,meal,"Presence of missing tokens, empty strings, or ""Undefined"" labels (which structurally equate to SC)","meal.str.strip().lower().isin(tokens_lower) or meal.eq("""")",24,R00012; R00033; R00074; R00109; R00155
-ISSUE_09,children,Presence of empty cells or text-based missing tokens instead of numeric integer values,"children.str.strip().lower().isin(tokens_lower) or children.eq("""")",41,R00020; R00025; R00053; R00089; R00130
-ISSUE_10,reservation_status_date,"Empty values, missing tokens, or malformed formats within the reservation status update date column","reservation_status_date.str.strip().eq("""") or missing tokens",26,R00030; R00040; R00075; R00111; R00160
+I01,booking_id,booking_id có khoảng trắng hoặc chữ thường,booking_id != booking_id.strip().upper(),215,R00096; R00110; R00236; R00329; R00406
+I02,booking_id,booking_id lặp sau strip().upper() (một đặt phòng ở nhiều dòng),norm_bid.duplicated(keep=False),646,R00005; R00009; R00023; R00041; R00084
+I03,23 cột nghiệp vụ,Dòng trùng tuyệt đối trên 23 cột (sau chuẩn hóa booking_id),raw_df.assign(booking_id=norm_bid).duplicated(subset=biz_cols),181,R00608; R00887; R00980; R01389; R01466
+I04,reservation_status,Ngày YYYY-MM-DD nằm nhầm ở reservation_status,reservation_status.str.fullmatch(\d{4}-\d{2}-\d{2}),26,R00141; R00331; R00390; R00499; R00822
+I05,hotel,"Nhãn hotel sai hoa/thường, thiếu ""Hotel"", khoảng trắng","hotel not in {City Hotel, Resort Hotel}",221,R00010; R00054; R00055; R00063; R00074
+I06,meal,"Nhãn meal lạ (bb, B&B, Half Board, Undefined…)","meal not in {BB,HB,FB,SC}",240,R00017; R00036; R00041; R00074; R00078
+I07,market_segment,Nhãn market_segment lệch chuẩn hoặc Undefined,not in 7 nhãn chuẩn,141,R00070; R00193; R00225; R00292; R00341
+I08,distribution_channel,"Nhãn distribution_channel lệch chuẩn (TA-TO, ta/to…) hoặc Undefined",not in 4 nhãn chuẩn,67,R00020; R00091; R00314; R00496; R00546
+I09,deposit_type,"Nhãn deposit_type lệch chuẩn (Non-Refund, NonRefund, no deposit…)",not in 3 nhãn chuẩn,78,R00003; R00220; R00365; R00606; R00722
+I10,customer_type,"Nhãn customer_type lệch chuẩn (Transient_Party, transient…)",not in 4 nhãn chuẩn,81,R00154; R00419; R00459; R00517; R00715
+I11,reservation_status,"Nhãn reservation_status lệch chuẩn (CHECKOUT, Cancelled, no show…)",not in 3 nhãn chuẩn và không phải ngày,93,R00127; R00129; R00223; R00458; R00476
+I12,is_canceled,is_canceled viết yes/no/True/False/1.0/0.0,"is_canceled not in {'0','1'}",205,R00037; R00059; R00125; R00130; R00138
+I13,arrival_date,"arrival_date không phải ISO (dd/mm/yyyy, March 5, 2016, 05-Mar-2016)",không khớp \d{4}-\d{2}-\d{2} và không thiếu,1970,R00005; R00011; R00014; R00015; R00019
+I14,adr,adr có €/EUR hoặc dấu phẩy thập phân,"adr chứa € / EUR / ,",121,R00081; R00432; R00549; R00601; R00663
+I15,stays_in_*,"Số đêm có hậu tố ""nights"" hoặc dạng thập phân 2.0",str.contains(night|\.0$),85,R00068; R00153; R00215; R00350; R00391
+I16,country,country viết thường / khoảng trắng / tên đầy đủ,country != country.strip().upper() hoặc dài > 3,220,R00236; R00268; R00273; R00275; R00315
+I17,reserved/assigned_room_type,"Mã phòng chữ thường, khoảng trắng hoặc mã lạ",mã not in ROOM_TYPES,117,R00033; R00113; R00314; R00341; R00419
+I18,"mọi cột (trừ row_id, booking_id)","Ô rỗng hoặc ký hiệu thiếu (NULL, N/A, NA, ?, unknown, -)","strip()=="""" hoặc lower() ∈ MISSING_TOKENS",307,R00064; R00065; R00097; R00103; R00114
