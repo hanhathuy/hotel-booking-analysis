@@ -24,7 +24,6 @@ total_of_special_requests,before,10325,0,0,0.0,
 reservation_status,before,10325,0,26,0.0,sai = ngày nằm nhầm cột (B2) hoặc nhãn lạ -> thiếu
 reservation_status_date,before,10325,26,10,0.25,thiếu thô giảm sau B2 vì ngày nằm nhầm được chuyển sang đây
 booking_id,after,10000,0,0,0.0,
-row_id,after,10000,0,0,0.0,
 hotel,after,10000,0,0,0.0,
 is_canceled,after,10000,0,0,0.0,
 lead_time,after,10000,31,0,0.31,
