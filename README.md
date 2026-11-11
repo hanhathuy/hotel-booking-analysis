@@ -4,13 +4,13 @@
 
 | Họ tên | MSSV | Phụ trách chính | Có thể giải thích thêm |
 |---|---|---|---|
-| | | | |
-| | | | |
+| Hà Nhật Huy  | 11253519 | A1-A5, B1-B4, C1-C3, D1-D5(Câu 1 - Câu 5) | Bonus 2 |
+| Lê Minh Quân | 11257109 | A6, B5-B8, C4-C4+, D6-D10(Câu 6 - Câu 10) | Bonus 1 |
 | | | | |
 
 ## 2. Cách chạy lại
 
-1. Giải nén `NhomXX_KhachSan.zip`, giữ nguyên cấu trúc thư mục.
+1. Giải nén `Nhom10_KhachSan.zip`, giữ nguyên cấu trúc thư mục.
 2. Mở `hotel_analysis.ipynb` tại thư mục gốc; chọn **Restart & Run all**.
 3. Kết quả được ghi vào `outputs/` (5 tệp dữ liệu, `tables/`, `figures/`).
 
@@ -20,11 +20,11 @@ Thời gian chạy toàn bộ trên máy nhóm: khoảng … giây.
 
 | Thành phần | Phiên bản |
 |---|---|
-| Python | |
-| pandas | |
-| matplotlib | |
-| seaborn (nếu dùng) | |
-| Môi trường | Google Colab / Jupyter / VS Code |
+| Python | 3.14.2 |
+| pandas | 3.0.1 |
+| matplotlib | 3.11.1 |
+| seaborn (nếu dùng) | 0.13.2  |
+| Môi trường | Google Colab và VS Code |
 
 ## 4. Nguồn dữ liệu
 
