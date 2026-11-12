@@ -35,8 +35,10 @@ Bản biên soạn cho học tập `hotel_bookings_dirty.csv` (10.325 dòng × 2
 
 | # | Tình huống | Quy tắc nhóm chọn | Lý do | Ảnh hưởng đến kết quả |
 |---|---|---|---|---|
-| 1 | Xung đột giá trị khi gộp cùng booking_id | | | |
-| 2 | | | | |
+| 1 | Xung đột giá trị khi gộp cùng booking_id | Mỗi cột lấy giá trị không thiếu đầu tiên theo `row_id` tăng dần; khi hai giá trị khác nhau thì giữ giá trị của dòng `row_id` nhỏ nhất; ghi cột xung đột vào `row_lineage.note` | Không có bằng chứng bản trích xuất nào đáng tin hơn; quy tắc xác định, tái lập được, tốt hơn lấy trung bình | 15 booking_id xung đột (`lead_time` 7, `adr` 8; 0,15%); 22 ô thiếu được điền từ dòng trùng |
+| 2 | Dòng trùng tuyệt đối bị loại ở B1 | Gán trạng thái `merged` trong `row_lineage` (không dùng `dropped`); cột `note` chỉ ghi xung đột | Dòng trùng là bản sao của dòng được giữ, không mất thông tin | `row_lineage` phủ đủ 10.325 `row_id`: 10.000 `kept` + 325 `merged` |
+| 3 | Giá trị hiếm nhưng nằm trong miền hợp lệ | Giữ trong bảng sạch và báo cáo riêng: ADR = 0 (132 đặt phòng), 0 đêm (38), 0 khách (10), `lead_time` tối đa 709 ngày | Có thể là phòng tặng hoặc đặt phòng đặc biệt; xóa là suy đoán | Câu 8 loại ADR = 0 khỏi thống kê giá (120 đặt phòng không hủy) nhưng nêu số riêng; Câu 9 giữ 37 đặt phòng 0 đêm |
+| 4 | Cách đếm trong `cleaning_log` | `affected_rows` = số dòng thỏa quy tắc phát hiện; `changed_cells` = số ô thực sự đổi giá trị; không cộng `affected_rows` giữa các quy tắc | Một dòng có thể thỏa nhiều quy tắc; một số ô đã trống từ trước nên không phải do quy tắc tạo ra | Ví dụ B5 `arrival_date`: 49 dòng thỏa quy tắc, trong đó 25 ô đã trống nên 24 ô đổi giá trị |
 
 ## 6. Danh sách tệp nộp
 
